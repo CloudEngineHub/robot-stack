@@ -3,7 +3,7 @@
 <p align="center">
   <a href="https://arxiv.org/abs/2607.09701"><img src="https://img.shields.io/badge/Paper-arXiv-b31b1b?style=for-the-badge&logo=arxiv&logoColor=white" alt="Paper"></a>
   <a href="https://egosteer.github.io/"><img src="https://img.shields.io/badge/Project-Page-1a73e8?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Project Page"></a>
-  <a href="https://huggingface.co/EgoSteer/datasets"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20Data-Hugging%20Face-FFD21E?style=for-the-badge&labelColor=555555" alt="Data"></a>
+  <a href="https://huggingface.co/datasets/EgoSteer/EgoSteer-RealWorld"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20Data-Hugging%20Face-FFD21E?style=for-the-badge&labelColor=555555" alt="Data"></a>
   <a href="https://huggingface.co/EgoSteer/models"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20Model-Hugging%20Face-FFD21E?style=for-the-badge&labelColor=555555" alt="Model"></a>
 </p>
 
@@ -20,6 +20,8 @@
 Our **full-stack system** integrates [EgoSmith](https://github.com/egosteer/egosmith), [Robot Stack](https://github.com/egosteer/robot-stack) (this repo), and [EgoSteer](https://github.com/egosteer/egosteer) to learn from large-scale egocentric human videos and facilitate data-efficient real-robot post-training, enabling steerable dexterous manipulation across over 40 tasks alongside few-shot adaptation to complex, long-horizon tasks.
 
 This repository contains the unified **Robot Stack** for teleoperation, model inference, and human-in-the-loop correction. It runs on the RealMan embodiment out of the box, and can be easily extended to other robot embodiments.
+
+> **📦 Dataset release:** the 192-hour, 193-task real-robot dataset collected with this stack is open-sourced on Hugging Face as [**EgoSteer/EgoSteer-RealWorld**](https://huggingface.co/datasets/EgoSteer/EgoSteer-RealWorld) (LeRobot v3 format).
 
 ![Robot stack overview](assets/figure/robot-stack.png)
 
@@ -122,6 +124,12 @@ The entire data-collection workflow is controlled with a foot pedal:
 - **Pedal 1** starts recording, and stops it on the next press.
 - **Pedal 2** enables the arm to follow the tracker, and disables it on the next press.
 - **Pedal 3** discards the last recording.
+
+The real-robot dataset collected with this stack is released on Hugging Face as
+[EgoSteer/EgoSteer-RealWorld](https://huggingface.co/datasets/EgoSteer/EgoSteer-RealWorld): 54,454 teleoperated
+episodes (192 hours) across 193 tasks on the RealMan embodiment, with head and chest RGB-D, 74-dim proprioception, and
+free-form language instructions, in [LeRobot v3](https://github.com/huggingface/lerobot) format. The dataset card
+documents the state/action layout, coordinate frames, and calibration fields used by this stack.
 
 ### Model inference
 In this mode the trained policy drives the robot autonomously from a natural-language instruction. The policy runs on a model server, which lives in [a separate repository](https://github.com/egosteer/egosteer) and consumes camera, proprioception, and language observations to return actions. This stack runs the client that streams those observations to the server and executes the actions it returns.
