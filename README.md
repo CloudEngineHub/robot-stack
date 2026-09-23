@@ -21,9 +21,12 @@ Our **full-stack system** integrates [EgoSmith](https://github.com/egosteer/egos
 
 This repository contains the unified **Robot Stack** for teleoperation, model inference, and human-in-the-loop correction. It runs on the RealMan embodiment out of the box, and can be easily extended to other robot embodiments.
 
-> **📦 Dataset release:** the 192-hour, 193-task real-robot dataset collected with this stack is open-sourced on Hugging Face as [**EgoSteer/EgoSteer-RealWorld**](https://huggingface.co/datasets/EgoSteer/EgoSteer-RealWorld) (LeRobot v3 format).
-
 ![Robot stack overview](assets/figure/robot-stack.png)
+
+## News
+
+- **2026-09-23**: **📦 Dataset release:** the egocentric human pretraining dataset for the [EgoSteer](https://github.com/egosteer/egosteer) policy deployed with this stack, with **10,000 hours curated from 100,000 hours of raw videos** using [EgoSmith](https://github.com/egosteer/egosmith), is open-sourced on Hugging Face as [**EgoSteer/EgoSteer-Egocentric**](https://huggingface.co/datasets/EgoSteer/EgoSteer-Egocentric) (LeRobot v3 format; annotations only).
+- **2026-09-15**: **📦 Dataset release:** the 192-hour, 193-task real-robot dataset collected with this stack is open-sourced on Hugging Face as [**EgoSteer/EgoSteer-RealWorld**](https://huggingface.co/datasets/EgoSteer/EgoSteer-RealWorld) (LeRobot v3 format).
 
 ## Deployment
 
