@@ -1,4 +1,4 @@
-<h1 align="center">EgoSteer: A Full-Stack System Towards Steerable Dexterous Manipulation from Egocentric Videos</h1>
+<h1 align="center">EgoSteer: An Open-Source Full-Stack System Towards Steerable Dexterous Manipulation from Egocentric Videos</h1>
 
 <p align="center">
   <a href="https://arxiv.org/abs/2607.09701"><img src="https://img.shields.io/badge/Paper-arXiv-b31b1b?style=for-the-badge&logo=arxiv&logoColor=white" alt="Paper"></a>
@@ -17,7 +17,7 @@
   <img src="assets/figure/teaser.png" width="100%">
 </p>
 
-Our **full-stack system** integrates [EgoSmith](https://github.com/egosteer/egosmith), [Robot Stack](https://github.com/egosteer/robot-stack) (this repo), and [EgoSteer](https://github.com/egosteer/egosteer) to learn from large-scale egocentric human videos and facilitate data-efficient real-robot post-training, enabling steerable dexterous manipulation across over 40 tasks alongside few-shot adaptation to complex, long-horizon tasks.
+Our **full-stack system** integrates [EgoSmith](https://github.com/egosteer/egosmith), [Robot Stack](https://github.com/egosteer/robot-stack) (this repo), and [EgoSteer](https://github.com/egosteer/egosteer). EgoSmith curates 9,606 hours of egocentric data from 12 sources; 187 hours of robot demonstrations are used for post-training. EgoSteer follows free-form instructions across 45 evaluated tasks with 75% average success and achieves 79% average progress on five few-shot long-horizon tasks.
 
 This repository contains the unified **Robot Stack** for teleoperation, model inference, and human-in-the-loop correction. It runs on the RealMan embodiment out of the box, and can be easily extended to other robot embodiments.
 
@@ -187,7 +187,7 @@ If you find our paper or this repository helpful in your research or project, pl
 
 ```tex
 @misc{zhong2026egosteerfullstacksteerabledexterous,
-      title={EgoSteer: A Full-Stack System Towards Steerable Dexterous Manipulation from Egocentric Videos}, 
+      title={EgoSteer: An Open-Source Full-Stack System Towards Steerable Dexterous Manipulation from Egocentric Videos},
       author={Yifan Zhong and Zhang Chen and Tianrui Guan and Fanlian Zeng and Yuyao Ye and Tianjia He and Ka Nam Lui and Jiayi Li and Tingrui Zhang and Ruilin Yan and Xinhao Ji and Guangyu Zhao and Wenjie Lou and Jiayuan Zhang and Yuanpei Chen and Yaodong Yang},
       year={2026},
       eprint={2607.09701},
