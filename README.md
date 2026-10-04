@@ -30,7 +30,7 @@ This repository contains the unified **Robot Stack** for teleoperation, model in
 
 ## Deployment
 
-The stack runs inside a Docker container (ROS 2 Humble). The robot host requires only Docker and a running X server.
+The stack runs inside a Docker container (ROS 2 Humble). The base host requirements are Docker and a running X server, with `xhost` for display access. Voice prompts additionally use the host's `mpg123`; teleoperation needs the SteamVR setup below, and policy inference needs a separate EgoSteer model server.
 
 **1. Clone the repository** (on the host):
 ```bash
@@ -72,8 +72,11 @@ docker build -t egosteerai/robot-stack:1.0.0 -t egosteerai/robot-stack:latest - 
 ```
 
 **4. Create the container.** `create_container.sh <name>` creates a Docker container with the given name from the image, mounts the repository into it, maps the host `/dev`, and opens an interactive shell. For example, to create a container named `robot-stack`:
+
 ```bash
-./create_container.sh robot-stack       # re-enter this container later with: docker exec -it robot-stack bash
+./create_container.sh robot-stack       # creates the container and opens its first shell
+# Open an additional shell, or re-enter later:
+docker exec -it robot-stack bash
 ```
 The container's shell automatically sources `robot.bashrc` from the mounted repository. `robot.bashrc` sources ROS 2 and defines the following convenience commands used in the robot stack:
 ```bash
@@ -138,6 +141,8 @@ documents the state/action layout, coordinate frames, and calibration fields use
 In this mode the trained policy drives the robot autonomously from a natural-language instruction. The policy runs on a model server, which lives in [a separate repository](https://github.com/egosteer/egosteer) and consumes camera, proprioception, and language observations to return actions. This stack runs the client that streams those observations to the server and executes the actions it returns.
 
 The client is configured via `src/model_interface/config/model_interface.yaml`, where `human_in_the_loop` is kept `false` for pure inference. The hand-eye calibration results are placed under `assets/calibration/`, the default location read by the client; see [`assets/calibration/README.md`](assets/calibration/README.md) for the expected layout.
+
+Start the EgoSteer policy server before launching `interface`. The client defaults to `127.0.0.1:8765`; set `model_server_host` and `model_server_port` in the same configuration if the server runs at another address.
 
 On the host, launch the instruction terminal and open <http://localhost:8081>:
 ```bash
